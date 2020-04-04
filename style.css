@@ -27,13 +27,20 @@ body {
   
   .time-block{
     text-align: center;
-    border-radius: 15px;
+    border-radius: 10px;
+    background-color: linen; 
+    color: black;
+    height:100%;
+    width: 100%;
+    display: inline-block;
+    font-size: 1em;
   }
+
   
   .row {
     white-space: pre-wrap;
-    height: 80px;
-    border-top: 1px solid white;;
+    height: 60px;
+    border-top: 1px solid white;
   }
   
   .hour {
@@ -42,7 +49,7 @@ body {
     border-top: 1px dashed #000000;
   }
   
-  .past {
+  /* .past {
     background-color: #d3d3d3;
     color: white;
   }
@@ -55,17 +62,82 @@ body {
   .future {
     background-color: #77dd77;
     color: white;
-  }
+  } */
   
   .saveBtn {
     border-left: 1px solid black;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    background-color: #06AED5;
     color: white;
   }
   
   .saveBtn i:hover {
     font-size: 20px;
     transition: all .3s ease-in-out;
-  }  
+  }
+
+  .saveIcon {
+    background-color: darkturquoise;
+    font-size: 1.5em;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-radius: 0px 15px 15px 0px;
+    cursor: pointer;
+  }
+
+  .col-md-1, .col-md-2, .col-md-9 {
+    padding: 0;
+  }
+
+  #daily-schedule {
+    background-color: #b6d7e2;
+    margin-top: 20px;
+    margin-bottom: 80px;
+    padding: 40px;
+  } 
+  
+  .schedulerRow {
+    height: 50px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-size: 1em;
+    line-height: 1.5;
+    border-radius: 15px;
+  }
+
+  .dailySchedule {
+    color: black;  
+    font-size: 12pt;
+    height:100%;
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .container-fluid {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .schedulerRow {
+      height: 100%;
+      border-radius: 10;
+      margin: 10px;
+    }
+  
+    .saveIcon { border-radius: 0 0 15px 15px; }
+  
+    .time-block { border-radius: 15px 15px 0 0; }
+  }
+  
+  @keyframes shadow-pulse
+  {
+    0% {
+      box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+      box-shadow: 0 0 0 35px rgba(0, 0, 0, 0);
+    }
+  }
+  .shadowPulse {
+    animation: shadow-pulse 1s infinite;
+  }
