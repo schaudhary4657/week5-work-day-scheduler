@@ -3,12 +3,6 @@ $(document).ready(function() {
     var date = moment().format("dddd MMMM DD YYYY");
     var dateHour24 = moment().format("H");
     var dateHour12 = moment().format("h");
-    var test = false;
-
-    if (test) {
-        dateHour24 = 13;
-        dateHour12 = 1;
-    }
 
     var $displayDate = $("#currentDay")
     $displayDate.text(date);
@@ -18,8 +12,6 @@ $(document).ready(function() {
     // getting stored data from local storage and update the array with retrieved data
     var storedSchedule = JSON.parse(localStorage.getItem("storedSchedule"));
 
-    if (test) { console.log(storedSchedule); }
-
     if (storedSchedule !== null) {
         textarea = storedSchedule;
     }
@@ -28,14 +20,10 @@ $(document).ready(function() {
         textarea[2] = "Event that already happened";
         textarea[3] = "Current Hour";
     }
-
-    if (test) { console.log("full array of planned text", textarea); }
     
     // building scheduler with fix set of hours
     var $scheduleDiv = $("#daily-schedule");
     $scheduleDiv.empty();
-
-    if (test) { console.log("current time", dateHour12); }
 
     for (var hour = 9; hour <= 17; hour++) {
         var index = hour - 9;
@@ -110,30 +98,21 @@ $(document).ready(function() {
 
     // function to update color of row
     function updateRowColor ($hourRow, hour) {
-        if (test) { console.log("rowColor ", dateHour24, hour); }
 
         if (hour < dateHour24) {
-            if (test) { console.log("lessThan"); }
-            $hourRow.css("background-color","lightgrey");
-            // $hourRow.attr("class", "past");
+            $hourRow.addClass("pastDiv");
         }
-        else if ( hour > nowHour24) {
-            if (test) { console.log("greaterthan"); }
-            $hourRow.css("background-color","lightgreen");
-            // $hourRow.attr("class", "future");
+        else if ( hour > dateHour24) {
+            $hourRow.addClass("futureDiv");
         }
         else {
-            if (test) { console.log("equal"); }
-            $hourRow.css("background-color","lightred");
-            // $hourRow.attr("class", "present");
+            $hourRow.addClass("presentDiv");
         }
     };
 
     // editing on schedule area and saves the data to local storage
     $(document).on("click", "i", function(event) {
-        event.preventDefault();  
-
-        if (test) { console.log('click pta before ' + textarea); }
+        event.preventDefault();
 
         var $index = $(this).attr("save-id");
 
@@ -142,20 +121,13 @@ $(document).ready(function() {
 
         textarea[$index] = $value;
 
-
-        if (test) { console.log("value", $value); }
-        if (test) { console.log("index" , $index); }
-        if (test) { console.log("click pta after " + textarea); }
-
         $(`#saveid-${$index}`).removeClass("shadowPulse");
         localStorage.setItem("storedSchedule", JSON.stringify(textarea));
     });
 
     // function save button on change of input, check save button and add shadow pulse class
     $(document).on("change", "input", function(event) {
-        event.preventDefault();  
-        if (test) { console.log("onChange"); }
-        if (test) { console.log("id", $(this).attr("hour-index")); }
+        event.preventDefault();
 
         var i = $(this).attr("hour-index");
 
