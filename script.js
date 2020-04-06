@@ -68,11 +68,10 @@ $(document).ready(function() {
         $dailyScheduleSpan.attr("class", "dailySchedule");
         $dailyScheduleSpan.val(textarea[index]);
         
-        // creating column width
+        // creating column width and adding it and row component to row
         var $column9InputDiv = $("<div>");
         $column9InputDiv.addClass("col-md-9");
-    
-        // adding column width and row component to row
+        
         $rowDiv.append($column9InputDiv);
         $column9InputDiv.append($dailyScheduleSpan);
     
@@ -96,7 +95,7 @@ $(document).ready(function() {
         $scheduleDiv.append($rowDiv);
     };
 
-    // function to update color of row
+    // function to update color of time block row
     function updateRowColor ($hourRow, hour) {
 
         if (hour < dateHour24) {

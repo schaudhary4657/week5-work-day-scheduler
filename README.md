@@ -1,1 +1,5 @@
 # week5-work-day-scheduler
+
+Work-day-scheduler is a simple calendar application that allows the user to save events for each hour of the day. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery. This application displays the current day and is represented with timeblocks for standard business hours from 9 a.m. to 5 p.m. Each timeblock is color coded to reflect whether the time slot is in the past, the present, or the future which will change depending on the time of the day. This apllication also uses the Moment.js library to work with date and time.
+
+A user with busy schedule can add important events to daily planner and manage time effectively. The application displays the current day with color coded timeblocks, so that the user can know whether the time slot is in the past, the present, or the future. The user can click on the timeblock and enter an event which can be saved in the local storage by clicking the save button. When the application page is refreshed, the saved events persist in the timeblocks for that hour.
